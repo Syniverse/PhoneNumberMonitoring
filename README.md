@@ -3,7 +3,7 @@ Example code to subscribe & unsubscribe for Phone Number Monitoring from Syniver
 
 By downloading the attached python files, and simply adding your access token and delivery configuration Id you can quickly set up monitoring for the phone numbers in the file phonenumbers.txt.
 
-__Dependencies
+__ Dependencies
 
 You will first need to have an account (create at https://developer.syniverse.com ).
 
@@ -86,7 +86,7 @@ Download output response:
 
 Process finished with exit code 0
 
-__Example Phone Event Notification
+__ Example Phone Event Notification
 
 Once subscribed you will receive a notification if anything happens to a subscribed phone number.
 
