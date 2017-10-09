@@ -3,7 +3,7 @@ Example code to subscribe & unsubscribe for Phone Number Monitoring from Syniver
 
 By downloading the attached python files, and simply adding your access token and delivery configuration Id you can quickly set up monitoring for the phone numbers in the file phonenumbers.txt.
 
-# Dependencies
+## Dependencies
 
 You will first need to have an account (create at https://developer.syniverse.com ).
 
@@ -22,7 +22,7 @@ If you are just trying out the service you may want to try https://requestb.in/ 
 
 Once you have created the delivery configuration then you can read the delivery configuration from the table of delivery configurations on the delivery configurations page. The Id is typically a 3 digit number in the delivery configuration id field.
 
-# Sample output when running the Monitor script is
+## Sample output when running the Monitor script is
 
 python.exe PycharmProjects/BatchMonitor/BatchMonitor-Example.py
    Starting Engines 
@@ -54,7 +54,7 @@ Download output response:
 
 Process finished with exit code 0
 
-# Sample output when running the Unsubscribe script is 
+## Sample output when running the Unsubscribe script is 
 
 python.exe PycharmProjects/BatchMonitor/BatchMonitorUnsubscribe-Example.py
     Starting Engines
@@ -86,7 +86,7 @@ Download output response:
 
 Process finished with exit code 0
 
-# Example Phone Event Notification
+## Example Phone Event Notification
 
 Once subscribed you will receive a notification if anything happens to a subscribed phone number.
 
