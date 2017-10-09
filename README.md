@@ -3,7 +3,7 @@ Example code to subscribe & unsubscribe for Phone Number Monitoring from Syniver
 
 By downloading the attached python files, and simply adding your access token and delivery configuration Id you can quickly set up monitoring for the phone numbers in the file phonenumbers.txt.
 
-__ Dependencies
+__Dependencies
 
 You will first need to have an account (create at https://developer.syniverse.com ).
 
@@ -85,3 +85,20 @@ Download output response:
 +18139551760,unsubscribe,ALL,2017-07-28T09:04:55.564Z[UTC]
 
 Process finished with exit code 0
+
+__Example Phone Event Notification
+
+Once subscribed you will receive a notification if anything happens to a subscribed phone number.
+
+Notifications are sent by the Event Manager system (https://sdcdocumentation.syniverse.com/index.php/event-manager/overview) as a POST request to your defined end point.
+
+The headers and payload for an example notification are shown below.
+
+HEADERS
+  "X-ESS-EVENT-KEY": "+17805199493,",
+  "X-ESS-EVENT-TIMESTAMP": "2017-07-12T20:21:00.129Z",
+  "CONTENT-TYPE": "application/json; charset=UTF-8"
+
+BODY/PAYLOAD
+{"topic":"NIS-Events","attempt":1,"event":{"fld-val-list":{"number":"+17805199493","previous_carrier_id":"1025","previous_carrier_name":"AT@$# T WIRELESS","tracking_id":"1655272074","deactivation_date":"2017-06-03T04:00:00Z"},"evt-tp":"deactivation_event","timestamp":"2017-07-12T20:21:00.129Z"},"event-id":"d0qgWF8ERLGn_7JJOGhqNQ"}
+
