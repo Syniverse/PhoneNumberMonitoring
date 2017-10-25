@@ -24,12 +24,12 @@ Once you have created the delivery configuration then you can read the delivery 
 
 ## Sample output when running the Monitor script is
 
-python.exe PycharmProjects/BatchMonitor/BatchMonitor-Example.py
-   Starting Engines 
+python.exe PycharmProjects/QuickStart-BatchNumberMonitoring-Python2/BatchMonitor-Example-External.py
+### Starting Engines ###
 
 Creating file in Media Storage
 create file response status code: 201
-mss create response body: {"file_id":"a3b7ac34-9d86-4656-8376-cc480edc9887","company-id":"589","file_status":"CREATED","file_uri":"https://api.syniverse.com/mediastorage/v1/files/a3b7ac34-9d86-4656-8376-cc480edc9887/content","file_version":1,"file_checksum":0,"file_size":0,"file_fullsize":2000000,"creation_time":"2017-07-28T09:01:45.571 +0000","modified_time":"2017-07-28T09:01:45.571 +0000","file_retention_time":30,"expire_time":"2017-08-27T09:01:45.571 +0000"}
+mss create response body: {"file_id":"fa4b9ce1-b479-416a-903f-9789c12f36bc","company-id":"589","file_status":"CREATED","file_uri":"https://api.syniverse.com/mediastorage/v1/files/fa4b9ce1-b479-416a-903f-9789c12f36bc/content","file_version":1,"file_size":0,"file_fullsize":2000000,"creation_time":"2017-10-25T18:17:14.795 +0000","modified_time":"2017-10-25T18:17:14.795 +0000","file_retention_time":30,"expire_time":"2017-11-24T18:17:14.795 +0000"}
 
 Uploading input file to Media Storage
 upload response status code: 201
@@ -37,20 +37,20 @@ upload response:
 
 Scheduling the Number Monitoring batch job in Batch Automation
 Scheduling response status code: 201
-Scheduling response: {"schedule":{"id":"d4d5226b-e98c-4e82-9fa4-15b06afbaec8","jobId":"NIS-Monitor-v2","name":"NISMonitor","inputFileId":"a3b7ac34-9d86-4656-8376-cc480edc9887","fileRetentionDays":30,"scheduleRetentionDays":30,"outputFileNamingExpression":"DS1-NIS-Monitor-output.txt","outputFileFolder":"/opt/apps/aba/output","outputFileTag":null,"jobRuntimeContext":{"subscribedestinationid":"676","subscribeevents":"all"}}}
+Scheduling response: {"schedule":{"id":"5233bf88-1515-4e11-9509-f4c4381f595a","jobId":"NIS-Scrub-Monitor-fs1-v1","name":"NISScrubMonitor","inputFileId":"fa4b9ce1-b479-416a-903f-9789c12f36bc","fileRetentionDays":30,"scheduleRetentionDays":30,"outputFileNamingExpression":"DS1-NIS-Scrub-Monitor-output.txt","outputFileFolder":"/opt/apps/aba/output","outputFileTag":null,"jobRuntimeContext":{"subscribedestinationid":"676","subscribeevents":"all"}}}
 
 Waiting 20s for job to complete
 
 Retrieving batch job execution details
 Get batch job details status code: 200
-Get batch job details response: {"executions":[{"id":"c75317e5-af74-43e5-be22-784c2ade6e7d","scheduleDetail":{"id":"d4d5226b-e98c-4e82-9fa4-15b06afbaec8","jobId":"NIS-Monitor-v2","name":"NISMonitor","inputFileId":"a3b7ac34-9d86-4656-8376-cc480edc9887","fileRetentionDays":30,"scheduleRetentionDays":30,"outputFileNamingExpression":"DS1-NIS-Monitor-output.txt","outputFileFolder":"/opt/apps/aba/output","outputFileTag":null,"jobRuntimeContext":{"subscribedestinationid":"676","subscribeevents":"all"}},"status":"COMPLETE","statusReason":"Final Status","startTimestamp":1501232512949,"statusUpdateTimestamp":1501232518795,"outputFileId":"dedfb622-1f2f-415e-af69-10ba9f7bfd91","errorDetailFileId":"EMPTY_FILE","retryFileId":"EMPTY_FILE","recordSuccessCount":3,"recordRetryCount":0,"recordErrorCount":0,"outputFileURI":"https://api.syniverse.com/mediastorage/v1/files/dedfb622-1f2f-415e-af69-10ba9f7bfd91/content","errorDetailFileURI":"EMPTY_FILE","retryFileURI":"EMPTY_FILE"}]}
+Get batch job details response: {"executions":[{"id":"9bd6cca7-dd27-4a09-a1a7-6695caca6ff2","scheduleDetail":{"id":"5233bf88-1515-4e11-9509-f4c4381f595a","jobId":"NIS-Scrub-Monitor-fs1-v1","name":"NISScrubMonitor","inputFileId":"fa4b9ce1-b479-416a-903f-9789c12f36bc","fileRetentionDays":30,"scheduleRetentionDays":30,"outputFileNamingExpression":"DS1-NIS-Scrub-Monitor-output.txt","outputFileFolder":"/opt/apps/aba/output","outputFileTag":null,"jobRuntimeContext":{"subscribedestinationid":"676","subscribeevents":"all"}},"status":"COMPLETE","statusReason":"Final Status","startTimestamp":1508955437710,"statusUpdateTimestamp":1508955444918,"outputFileId":"817f01e7-df91-46c5-9030-2a45b984d034","errorDetailFileId":"EMPTY_FILE","retryFileId":"EMPTY_FILE","recordSuccessCount":3,"recordRetryCount":0,"recordErrorCount":0,"outputFileURI":"https://api.syniverse.com/mediastorage/v1/files/817f01e7-df91-46c5-9030-2a45b984d034/content","errorDetailFileURI":"EMPTY_FILE","retryFileURI":"EMPTY_FILE"}]}
 
 Downloading the Output file
 Download output status code: 200
 Download output response: 
-+18132633923,subscribe,"deactivation_event,porting_event,truedisconnect_event",2017-07-28T09:01:56.321Z[UTC]
-+18135041457,subscribe,"deactivation_event,porting_event,truedisconnect_event",2017-07-28T09:01:56.316Z[UTC]
-+18139551760,subscribe,"deactivation_event,porting_event,truedisconnect_event",2017-07-28T09:01:56.322Z[UTC]
++18132633923,true,,,M,USA,United States,310,160,,Deactivated,,16291,T-MOBILE USA INC.,2016-12-30T05:00:00Z,,,100290274651508955441949,false,
++18135041457,true,,,M,USA,United States,310,160,,Deactivated,,16291,T-MOBILE USA INC.,2016-12-30T05:00:00Z,,,100290274651508955441977,false,
++18139551760,true,1125,VERIZON WIRELESS,M,USA,United States,310,12,,None,,,,,,,100290274651508955441904,true,TestRef123
 
 Process finished with exit code 0
 
