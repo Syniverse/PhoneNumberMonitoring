@@ -16,6 +16,17 @@
 # see http://docs.python-requests.org/en/master/
 # also uses zlib to decompress the output file (output files are compressed using gzip)
 
+# this file uses the scrub and monitor job which supports a couple of extra features
+# compared to previous monitor job. These are
+# 1) phone numbers will be checked for validity before they are registered for monitoring.
+# validity check is
+#   a) has to be valid US number
+#   b) last event for the number must be NONE or PORTED or DEACTIVATED with a deactivation_date
+#   after the opt in date provided in the input file (if no opt in date is provided then this
+#   skipped
+# 2) an optional customer specified reference_id can be provided for each phone number. If provided
+# then this will be included in the output file.
+
 import zlib
 import time
 import requests
@@ -26,13 +37,14 @@ access_token = '[Your-Access-Token-Here]'
 # this is the name of the file containing the list of phone numbers.
 input_file_name = "phonenumbers.txt"
 # in this example it contains the following
-#+18132633923
-#+18135041457
-#+18139551760
+# +18132633923,,
+# +18135041457,20170515-010101 Z,
+# +1813955176020170515-010101 Z,TestRef123
 # i.e. full phone number including leading + and international code
 # I have only included 3 numbers, but it can contain up to 5 million
 # the only difference to the below code would be that you have to wait
 # for over an hour.
+# there are two additional optional fields optin date/time and customer specified reference
 
 # this is the delivery configuration.
 delivery_configuration_id = "[your-delivery-config-here]"
@@ -86,9 +98,9 @@ schedule_job_url = 'https://api.syniverse.com/aba/v1/schedules'
 
 schedule_job_headers = {'Authorization': 'Bearer ' + access_token, 'Content-Type': 'application/json'}
 
-schedule_job_payload = {"schedule": { "jobId" : "NIS-Monitor-v2", "name" : "NISMonitor", "inputFileId" : file_id,
+schedule_job_payload = {"schedule": { "jobId" : "NIS-Scrub-Monitor-fs1-v1", "name" : "NISScrubMonitor", "inputFileId" : file_id,
                                        "fileRetentionDays" : 30, "scheduleRetentionDays" : 30,
-                                       "outputFileNamingExpression" : "DS1-NIS-Monitor-output.txt",
+                                       "outputFileNamingExpression" : "DS1-NIS-Scrub-Monitor-output.txt",
                                        "outputFileFolder" : "/opt/apps/aba/output",
                                        "jobRuntimeContext" : {
                                            "subscribeevents": "all",
