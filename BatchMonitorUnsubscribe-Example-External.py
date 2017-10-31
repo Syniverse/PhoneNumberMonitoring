@@ -23,7 +23,7 @@ import requests
 access_token = '[Your-Access-Token-Here]'
 
 # this is the name of the file containing the list of phone numbers.
-input_file_name = "phonenumbers.txt"
+input_file_name = "phonenumbers-unsubscribe.txt"
 # in this example it contains the following
 #+18132633923
 #+18135041457
