@@ -161,3 +161,26 @@ output_data = zlib.decompress(download_output_response.content, zlib.MAX_WBITS|3
 
 print 'Download output status code: ' + str(download_output_response.status_code)
 print 'Download output response: \n' + output_data
+
+## Step 7: Delete Input File
+print ('\nDeleting Input File in Media Storage')
+
+delete_input_file_headers = {'Authorization': 'Bearer ' + access_token, 'Content-Type': 'application/json'}
+
+delete_input_file_response = requests.delete(create_file_url + file_id, headers=delete_input_file_headers)
+
+print ('Delete Input File status code: ' + str(delete_input_file_response.status_code))
+print ('Delete Input File response: ' + delete_input_file_response.text)
+
+
+## Step 8: Delete Output File
+print ('\nDeleting Output File in Media Storage')
+
+output_file_id = check_execution_response.json()['executions'][0]['outputFileId']
+
+delete_output_file_headers = {'Authorization': 'Bearer ' + access_token, 'Content-Type': 'application/json'}
+
+delete_output_file_response = requests.delete(create_file_url + output_file_id, headers=delete_output_file_headers)
+
+print ('Delete Output File status code: ' + str(delete_output_file_response.status_code))
+print ('Delete Output File response: ' + delete_output_file_response.text)
